@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaik Sumiya</title>
+  <link rel="icon" href="asserts/images/sumiya.jpg">
+  <link rel="stylesheet" href="./asserts/css/education.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+</head>
+
+<body>
+  <nav class="mb-1 w-full max-w-7xl mx-auto flex justify-between items-center px-4">
+   <h3 class="text-white text-xl font-semibold capitalize">
+  <a href="./index.html"><span>Shaik </span>Sumiya</a>
+</h3>
+
+    <ul class="flex flex-wrap gap-4 text-sm sm:text-base text-white">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./education.html" class="active">Education</a></li>
+      <li><a href="./skills.html">Skills</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero content -->
+  <div class="hero">
+    <main>
+      <div class="container">
+      <header><h1>Academic Qualifications</h1></header>
+        <div class="timeline">
+          <div class="timeline-item left">
+            <div class="edu-entry">
+              <h2>Bachelor of Technology in Computer Science</h2>
+              <p><strong>College :</strong> Sri Krishnadevaraya University College of Engineering and Technology, Anantapur</p>
+              <p><strong>Year of Passing :</strong> 2025</p>
+              <p><strong>Percentage:</strong> 81.10%</p>
+            </div>
+            <div class="dot"></div>
+          </div>
+
+          <div class="timeline-item right">
+            <div class="edu-entry">
+              <h2>Intermediate – MPC</h2>
+              <p><strong>College :</strong> Sri chaitanya junior college, Pileru</p>
+              <p><strong>Year of Passing :</strong> 2021</p>
+              <p><strong>Percentage :</strong> 94.80%</p>
+            </div>
+            <div class="dot"></div>
+          </div>
+
+          <div class="timeline-item left">
+            <div class="edu-entry">
+              <h2>SSC</h2>
+              <p><strong>School :</strong> Z.P.High School (Girls),Pileru</p>
+              <p><strong>Year of Passing :</strong> 2019</p>
+              <p><strong>Percentage :</strong> 93.10%</p>
+            </div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+<hr style="
+  border: none;
+  border-top: 1px solid gray;
+  margin: .1rem 0;
+">
+
+  <!-- Footer -->
+<footer class="bg-[#1b1b1b] py-6 w-full">
+  <div class="footer-container flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto px-4 space-y-4 md:space-y-0 md:space-x-6 text-center md:text-left">
+    
+    <p class="text-sm text-[#ccc]">&copy; 2025 Shaik Sumiya. All rights reserved.</p>
+
+    <div class="icons flex justify-center md:justify-end space-x-4 text-base text-white">
+      <a href="https://www.linkedin.com/in/shaik-sumiya04/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/SUMIYA04" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/sr_sumiya_04?igsh=cHhtYzd1YXQ4dzBh" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+  </div>
+</footer>
+
+
+  <!-- Reveal Animation -->
+  <script>
+    const cards = document.querySelectorAll(".edu-entry");
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaik Sumiya</title>
+  <link rel="stylesheet" href="./asserts/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="asserts/images/sumiya.jpg">
+  <style>
+    .custom-skill-btn {
+      background-color: #9b59b6;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-skill-btn:hover {
+      background-color: #884ea0;
+    }
+  </style>
+</head>
+
+<body class="h-full bg-[#1b1b1b] text-white font-[Poppins]">
+  <div class="hero">
+    <!-- Navigation -->
+    <nav class="flex flex-wrap items-center justify-between px-4 py-4 sm:px-8">
+      <h3 class="logo text-white text-xl font-semibold capitalize">
+        <a href="./index.html"><span>Shaik </span>Sumiya</a>
+      </h3>
+      <ul class="flex flex-wrap gap-4 sm:gap-6 text-sm sm:text-base">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./education.html">Education</a></li>
+        <li><a href="./skills.html" class="active">Skills</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+
+    <!-- Main Skill Section -->
+    <main class="flex-grow grid place-content-center px-4 sm:px-6 mt-0 overflow-hidden">
+      <section
+        x-data="skillDisplay"
+        class="p-4 sm:p-6 bg-[#2b2b2b] rounded-xl grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl mx-auto min-h-[800px] shadow-lg transition-shadow duration-300 hover:shadow-[2px_2px_20px_rgba(155,89,182,0.5)]"
+        style="box-shadow: 2px 2px 20px rgba(155,89,182,0.3);">
+         <div class="mt-4 px-2 text-center md:text-left md:col-span-2">
+          <p class="text-2xl font-semibold" x-text="currentSkill.title"></p>
+          <p class="mt-2 text-base text-gray-300" x-text="currentSkill.description"></p>
+        </div>
+        <!-- Circular Progress -->
+        <div class="relative flex items-center justify-center w-60 h-60 sm:w-72 sm:h-72 mx-auto"
+             x-data="{ circumference: 2 * 22 / 7 * 120 }">
+          <svg viewBox="0 0 290 290" class="w-full h-full transform -rotate-90">
+            <circle cx="145" cy="145" r="120" stroke="currentColor" stroke-width="30" fill="transparent"
+              class="text-gray-700" />
+            <circle cx="145" cy="145" r="120" stroke="currentColor" stroke-width="30" fill="transparent"
+              :stroke-dasharray="circumference"
+              :stroke-dashoffset="circumference - currentSkill.percent / 100 * circumference"
+              style="stroke: #9b59b6;"
+              class="transition-all duration-500 ease-out" />
+          </svg>
+          <span class="absolute text-3xl sm:text-4xl font-bold" x-text="`${currentSkill.percent}%`"></span>
+        </div>
+
+        <!-- Skill Buttons -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-0 sm:mt-2 px-2">
+          <template x-for="skill in skills" :key="skill.title">
+            <button
+              x-text="skill.title"
+              class="px-4 py-2 text-sm sm:text-base text-white rounded-md custom-skill-btn"
+              :class="(currentSkill.title === skill.title) && 'font-bold ring-2 ring-white'"
+              @click="currentSkill = skill"
+            ></button>
+          </template>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#1b1b1b] py-6 text-center">
+    <div class="footer-container space-y-2">
+      <p>&copy; 2025 Shaik Sumiya. All rights reserved.</p>
+      <div class="footer-icons flex justify-center space-x-4 text-base">
+        <a href="https://www.linkedin.com/in/shaik-sumiya04/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/SUMIYA04" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/sr_sumiya_04?igsh=cHhtYzd1YXQ4dzBh" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Alpine JS -->
+  <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+
+  <!-- Skill Logic -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('skillDisplay', () => ({
+        skills: [
+          {
+            title: 'Python',
+            percent: 87,
+            description: 'A high‑level, interpreted language I use to build scalable back‑end services, automate workflows, and process data. Its extensive ecosystem —frameworks like Django/Flask, libraries such as Pandas/NumPy, and testing tools like PyTest—enables rapid prototyping and production‑ready deployments.'
+
+          },
+          {
+            title: 'Django',
+            percent: 70,
+            description: 'A “batteries‑included” Python web framework for rapid, secure backend development. I leverage its ORM, admin panel, and auth system to build scalable APIs.'
+          },
+          {
+            title: 'HTML',
+            percent: 94,
+            description: 'The backbone of every web page—provides semantic, accessible structure. I ensure my markup is well‑organized for SEO and screen‑readers.'
+          },
+          {
+            title: 'CSS',
+            percent: 88,
+            description: 'Styles web content with layout, typography, and responsive design. I combine Flexbox, Grid, and custom properties to craft polished UIs.'
+          },
+          {
+            title: 'JavaScript',
+            percent: 75,
+            description: 'Drives interactivity in the browser. I use ES6+ syntax and async APIs to build dynamic, performant front‑end experiences.'
+          },
+          {
+            title: 'Oracle SQL',
+            percent: 90,
+            description: 'Manages and queries relational data with high performance. I design normalized schemas and write optimized queries for large datasets.'
+          },
+          {
+            title: 'Git/GitHub',
+            percent: 75,
+            description: 'Industry‑standard version control and collaboration platform. I maintain clean branches and enforce code reviews via pull requests.'
+          },
+          {
+            title: 'NumPy',
+            percent: 70,
+            description: 'Core library for numerical computing on arrays. I leverage its vectorized operations for fast data transformations and scientific calculations.'
+          },
+          {
+            title: 'Pandas',
+            percent: 70,
+            description: 'Powerful DataFrame library for data wrangling. I use it for cleaning, aggregating, and preparing datasets for analysis and ML.'
+          },
+          {
+            title: 'PySpark',
+            percent: 65,
+            description: 'Python API for distributed data processing with Apache Spark. I build scalable ETL pipelines and big‑data analytics workflows.'
+          },
+          {
+            title: 'Bootstrap',
+            percent: 80,
+            description: 'CSS framework with ready‑made components and grid system. I customize its theme to deliver consistent, mobile‑first user interfaces.'
+          },
+          {
+            title: 'Tailwind CSS',
+            percent: 69,
+            description: 'Utility‑first CSS for rapid, low‑overhead styling. I compose its classes to build highly customizable, maintainable designs.'
+          }
+        ],
+        currentSkill: {
+          title: 'Python',
+          percent: 87,
+          description: 'A versatile language for back‑end development, scripting, and data analysis. I use it to write clean, maintainable code and automate workflows.'
+        }
+      }));
+    });
+  </script>
+</body>
+
+</html>
